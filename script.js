@@ -371,6 +371,21 @@ function activateForms() {
   });
 }
 
+function initializeGiftEnvelope() {
+  const envelopeButton = document.querySelector(".envelope-button");
+  const bankCard = document.getElementById("iban-regalo");
+
+  if (!envelopeButton || !bankCard) return;
+
+  envelopeButton.addEventListener("click", () => {
+    const isOpen = envelopeButton.getAttribute("aria-expanded") === "true";
+
+    envelopeButton.setAttribute("aria-expanded", `${!isOpen}`);
+    bankCard.hidden = isOpen;
+  });
+}
+
 initializeScrollReveal();
 initializeAmbientVideos();
 activateForms();
+initializeGiftEnvelope();

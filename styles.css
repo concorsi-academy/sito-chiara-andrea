@@ -426,9 +426,22 @@ main,
   backdrop-filter: blur(12px);
 }
 
+.hero__invitation-card {
+  max-width: min(34rem, calc(100% - 1.5rem));
+  padding: 0.65rem;
+}
+
+.hero__invitation-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 1.45rem;
+  box-shadow: 0 18px 42px rgba(87, 70, 48, 0.12);
+}
+
 .hero__title-shell {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: clamp(0.8rem, 2vw, 1.35rem);
 }
 
@@ -705,9 +718,39 @@ main,
 }
 
 .journey-panel__media img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.journey-panel__media--contain {
+  display: flex;
+  align-items: center;
+  background: rgba(244, 236, 222, 0.78);
+}
+
+.journey-panel__media--contain img {
+  height: auto;
+  object-fit: contain;
+}
+
+.journey-panel__media--duo {
+  display: grid;
+  grid-template-rows: 1.25fr 1fr;
+  gap: 0.8rem;
+  min-height: 31rem;
+  padding: 0.8rem;
+  background: rgba(255, 252, 246, 0.68);
+}
+
+.journey-panel__media--duo img {
+  min-height: 0;
+  border-radius: 1rem;
+}
+
+.journey-panel__media--duo .journey-panel__media-main {
+  object-position: center 54%;
 }
 
 .scroll-reveal {
@@ -871,8 +914,56 @@ main,
   opacity: 0.34;
 }
 
+.utility-card p + p {
+  margin-top: 0.75rem;
+}
+
+.contact-list {
+  display: grid;
+  gap: 0.85rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.contact-list li {
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(120, 100, 72, 0.14);
+  border-radius: 1rem;
+  background: rgba(255, 252, 246, 0.7);
+}
+
+.contact-list span {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.contact-list a {
+  color: var(--bronze);
+  text-decoration: none;
+}
+
+.confirmation-note {
+  margin: 0 0 1.2rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(157, 115, 72, 0.22);
+  border-radius: 1.1rem;
+  background: rgba(255, 251, 244, 0.78);
+  color: var(--bronze);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
 .forms-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.forms-grid--single {
+  grid-template-columns: minmax(0, 46rem);
+  justify-content: center;
 }
 
 .detail-form {
@@ -934,7 +1025,9 @@ main,
   color: var(--muted);
 }
 
-.registry-link-placeholder {
+.registry-link-placeholder,
+.registry-preview-card {
+  display: block;
   margin: 1.35rem 0 0;
   padding: 1rem 1.15rem;
   border-radius: 1.2rem;
@@ -942,7 +1035,119 @@ main,
   background: rgba(255, 251, 244, 0.78);
   color: var(--bronze);
   font-size: 1rem;
+  font-weight: 700;
   letter-spacing: 0.04em;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.registry-link-placeholder:hover,
+.registry-link-placeholder:focus-visible,
+.registry-preview-card:hover,
+.registry-preview-card:focus-visible {
+  border-color: rgba(157, 115, 72, 0.5);
+  box-shadow: 0 16px 30px rgba(87, 70, 48, 0.1);
+  transform: translateY(-1px);
+}
+
+.registry-preview-card {
+  padding: 0.8rem;
+  border-style: solid;
+  text-align: left;
+}
+
+.registry-preview-card__window {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(120, 100, 72, 0.16);
+  border-radius: 1rem;
+  background:
+    linear-gradient(135deg, rgba(255, 252, 247, 0.95), rgba(241, 232, 217, 0.9)),
+    var(--surface-strong);
+}
+
+.registry-preview-card__bar {
+  display: flex;
+  gap: 0.34rem;
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid rgba(120, 100, 72, 0.12);
+  background: rgba(245, 238, 227, 0.78);
+}
+
+.registry-preview-card__bar span {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: rgba(157, 115, 72, 0.42);
+}
+
+.registry-preview-card__body {
+  display: grid;
+  gap: 0.55rem;
+  padding: 1rem;
+}
+
+.registry-preview-card__brand {
+  color: var(--bronze);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.registry-preview-card__title {
+  color: var(--text);
+  font-size: 1.28rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.registry-preview-card__line {
+  width: 70%;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: rgba(112, 128, 85, 0.16);
+}
+
+.registry-preview-card__tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.registry-preview-card__tiles span {
+  min-height: 3.4rem;
+  border-radius: 0.75rem;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.72), rgba(157, 115, 72, 0.16));
+}
+
+.registry-preview-card__cta {
+  display: block;
+  margin-top: 0.75rem;
+  color: var(--bronze);
+  font-weight: 700;
+  text-align: center;
+}
+
+.gift-action-hint {
+  display: block;
+  width: 100%;
+  margin: 0.9rem 0 0;
+  padding: 0.85rem 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 251, 244, 0.78);
+  color: var(--bronze);
+  font-weight: 700;
+  text-align: center;
+}
+
+.envelope-button .gift-action-hint {
+  margin: 0 0 0.75rem;
 }
 
 .envelope-card {
@@ -956,6 +1161,21 @@ main,
   margin-top: 0.4rem;
 }
 
+.envelope-button {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.envelope-button:focus-visible {
+  outline: 3px solid rgba(153, 120, 78, 0.42);
+  outline-offset: 0.35rem;
+  border-radius: 1.45rem;
+}
+
 .envelope-photo {
   display: block;
   width: 100%;
@@ -963,6 +1183,15 @@ main,
   margin-bottom: 0.35rem;
   border-radius: 1.45rem;
   box-shadow: 0 20px 36px rgba(141, 97, 51, 0.1);
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.envelope-button:hover .envelope-photo,
+.envelope-button:focus-visible .envelope-photo {
+  box-shadow: 0 24px 42px rgba(141, 97, 51, 0.16);
+  transform: translateY(-2px);
 }
 
 .envelope-card .bank-card {
@@ -1379,6 +1608,10 @@ main,
     min-height: 24rem;
   }
 
+  .journey-panel__media--duo {
+    min-height: 28rem;
+  }
+
   .journey-panel__map {
     height: 14rem;
   }
@@ -1469,6 +1702,11 @@ main,
 
   .journey-panel__media {
     min-height: 18rem;
+  }
+
+  .journey-panel__media--duo {
+    grid-template-rows: 1fr 1fr;
+    min-height: 30rem;
   }
 
   .journey-panel__map {
