@@ -358,15 +358,49 @@ function activateForms() {
 
   forms.forEach((form) => {
     const status = form.querySelector(".form-status");
+    const submitButton = form.querySelector('button[type="submit"]');
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       if (!status) return;
 
-      const formName = form.getAttribute("data-form-name") || "modulo";
-      status.textContent = `${formName} pronto: per renderlo operativo bastera collegarlo a email, database o servizio form.`;
-      form.reset();
+      const formData = new FormData(form);
+      const originalButtonText = submitButton ? submitButton.textContent : "";
+
+      status.textContent = "Invio in corso...";
+      status.classList.remove("form-status--error", "form-status--success");
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Invio...";
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method || "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Invio non riuscito");
+        }
+
+        status.textContent = "Grazie, la conferma e' stata inviata correttamente.";
+        status.classList.add("form-status--success");
+        form.reset();
+      } catch (error) {
+        status.textContent = "Non siamo riusciti a inviare la conferma. Riprova tra qualche minuto oppure contatta gli sposi.";
+        status.classList.add("form-status--error");
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      }
     });
   });
 }

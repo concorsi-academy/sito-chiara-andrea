@@ -297,10 +297,20 @@
             Si richiede gentile conferma entro l'01/07/2026 utilizzando l'apposito form.
             Selezionare anche le opzioni per eventuali intolleranze, allergie o regimi alimentari.
           </p>
-          <form class="detail-form" data-form-name="RSVP">
+          <form
+            class="detail-form"
+            data-form-name="RSVP"
+            action="https://formsubmit.co/ajax/andrew83.pecca@libero.it"
+            method="POST"
+          >
+            <input type="hidden" name="_cc" value="c.donadio@icloud.com">
+            <input type="hidden" name="_subject" value="Nuova conferma matrimonio Chiara e Andrea">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+
             <label>
               Parteciperai?
-              <select name="attendance" required>
+              <select name="Parteciperai" required>
                 <option value="">Seleziona</option>
                 <option value="si">Si', con gioia</option>
                 <option value="no">No, con dispiacere</option>
@@ -309,19 +319,19 @@
 
             <label>
               Nome e cognome
-              <input type="text" name="guest_name" placeholder="Inserisci il tuo nome" required>
+              <input type="text" name="Nome e cognome" placeholder="Inserisci il tuo nome" required>
             </label>
 
             <label>
               Numero di telefono
-              <input type="tel" name="guest_phone" placeholder="Inserisci il tuo numero" required>
+              <input type="tel" name="Numero di telefono" placeholder="Inserisci il tuo numero" required>
             </label>
 
             <label>
               Numero di persone per famiglia
               <input
                 type="number"
-                name="family_count"
+                name="Numero di persone per famiglia"
                 min="1"
                 step="1"
                 placeholder="Scrivi il numero di partecipanti"
@@ -331,7 +341,7 @@
 
             <label>
               Esigenze alimentari
-              <select name="dietary_needs" required>
+              <select name="Esigenze alimentari" required>
                 <option value="">Seleziona</option>
                 <option value="nessuna">Nessuna esigenza particolare</option>
                 <option value="allergie">Allergie</option>
@@ -344,7 +354,7 @@
 
             <label>
               Dettagli o messaggio per gli sposi
-              <textarea name="message" rows="4" placeholder="Indica eventuali dettagli su allergie, intolleranze, regime alimentare o altre note"></textarea>
+              <textarea name="Dettagli o messaggio" rows="4" placeholder="Indica eventuali dettagli su allergie, intolleranze, regime alimentare o altre note"></textarea>
             </label>
 
             <button class="button button--primary" type="submit">Invia conferma</button>
